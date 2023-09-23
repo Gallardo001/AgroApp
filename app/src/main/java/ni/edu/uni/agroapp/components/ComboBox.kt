@@ -1,5 +1,6 @@
 package ni.edu.uni.agroapp.components
 
+import android.graphics.Color
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
@@ -16,10 +17,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.toSize
 
 @Composable
-fun dropDownMenu() {
+fun dropDownMenu(list:List<String>, title:String) {
 
         var expanded by remember { mutableStateOf(false) }
-        val suggestions = listOf("Kotlin", "Java", "Dart", "Python")
+        val suggestions = list
         var selectedText by remember { mutableStateOf("") }
 
         var textfieldSize by remember { mutableStateOf(Size.Zero)}
@@ -30,7 +31,7 @@ fun dropDownMenu() {
             Icons.Filled.KeyboardArrowDown
 
 
-        Column(Modifier.padding(20.dp)) {
+
             OutlinedTextField(
                 selectedText, { selectedText = it }, Modifier
                     .fillMaxWidth()
@@ -38,7 +39,10 @@ fun dropDownMenu() {
                         //This value is used to assign to the DropDown the same width
                         textfieldSize = coordinates.size.toSize()
                     },
-                label = {Text("Tipo de Cultivo")},
+                label = {Text(title)},
+                colors = TextFieldDefaults.textFieldColors(
+                    backgroundColor = androidx.compose.ui.graphics.Color.LightGray
+                ),
                 trailingIcon = {
                     Icon(icon,"contentDescription",
                         Modifier.clickable { expanded = !expanded })
@@ -61,4 +65,4 @@ fun dropDownMenu() {
             }
         }
 
-    }
+

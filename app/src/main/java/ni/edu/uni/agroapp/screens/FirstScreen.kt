@@ -1,6 +1,7 @@
 package ni.edu.uni.agroapp.screens
 
 import android.R
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -23,7 +24,8 @@ fun FirstScreen(){
       modifier = Modifier
           .fillMaxSize()
           .padding(30.dp),
-    horizontalAlignment = Alignment.CenterHorizontally
+    horizontalAlignment = Alignment.CenterHorizontally,
+      verticalArrangement = Arrangement.spacedBy(12.dp)
   ) {Text(
         text = "Busquemos acerca de tu cultivo",
         fontSize = 28.sp,
@@ -34,7 +36,15 @@ fun FirstScreen(){
     )
       TextFieldNormal(text = "Nombre de la finca" ,
           onValueChange = {})
-      dropDownMenu( )
+      dropDownMenu(
+          list = listOf("Cacao", "Maíz", "Frijol", "Arroz", "Café"),
+          title = "Tipos de cultivos"
+      )
+      dropDownMenu(
+          list = listOf(Atlántico Norte, Atlántico Sur, Boaco, Carazo,
+              Chinandega, Chontales, Esteli, Granada, Jinotega, León, Madriz, Managua,
+              Masaya, Matagalpa, Nueva Segovia, Río San Juan, Rivas.),
+          title = )
 }
   }
 @Composable

@@ -1,6 +1,7 @@
 package ni.edu.uni.agroapp.screens
 
 import android.R
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -14,6 +15,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import ni.edu.uni.agroapp.components.LoginButton
 import ni.edu.uni.agroapp.components.TextFieldNormal
 import ni.edu.uni.agroapp.components.dropDownMenu
 
@@ -23,10 +25,11 @@ fun FirstScreen(modifier: Modifier = Modifier){
       modifier = modifier
           .fillMaxSize()
           .padding(30.dp),
-    horizontalAlignment = Alignment.CenterHorizontally
+    horizontalAlignment = Alignment.CenterHorizontally,
+      verticalArrangement = Arrangement.spacedBy(30.dp)
   ) {Text(
         text = "Busquemos acerca de tu cultivo",
-        fontSize = 28.sp,
+        fontSize = 40.sp,
         fontWeight = FontWeight.ExtraBold,
         color = Color(0xFF737373),
         textAlign = TextAlign.Center
@@ -34,13 +37,24 @@ fun FirstScreen(modifier: Modifier = Modifier){
     )
       TextFieldNormal(text = "Nombre de la finca" ,
           onValueChange = {})
-      dropDownMenu( )
+      dropDownMenu(
+          list = listOf("Cacao", "Maíz", "Frijol", "Arroz", "Café"),
+          title = "Tipos de cultivos"
+      )
+      dropDownMenu(
+          list = listOf("Atlántico Norte", "Atlántico Sur", "Boaco", "Carazo",
+              "Chinandega", "Chontales", "Esteli", "Granada", "Jinotega", "León",
+              "Madriz", "Managua", "Masaya", "Matagalpa", "Nueva Segovia",
+              "Río San Juan", "Rivas"),
+          title = "Locolazacion"
+      )
+      LoginButton(
+          loginEnable = true,
+          text = "Buscar") {
+
+      }
 }
   }
-@Composable
-fun MyTextBox(){
-
-}
 @Preview(showSystemUi = true)
 @Composable
 fun FirstScreenPreview(){

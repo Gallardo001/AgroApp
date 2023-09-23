@@ -29,31 +29,36 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
 import ni.edu.uni.agroapp.R
-import ni.edu.uni.agroapp.navigation.Screens
+import ni.edu.uni.agroapp.components.LoginButton
 import ni.edu.uni.agroapp.screens.viewmodel.LoginViewModel
 
 @Composable
-fun LoginScreen(viewModel: LoginViewModel,isLoggedIn:Boolean,onClick: (Boolean) -> Unit) {
+fun LoginScreen(viewModel: LoginViewModel) {
     Box(
         Modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        Login(Modifier.align(Alignment.Center), viewModel,isLoggedIn,onClick)
+        Login(Modifier.align(Alignment.Center), viewModel)
     }
 }
 
 @Composable
-fun Login(modifier: Modifier, viewModel: LoginViewModel,isLoggedIn:Boolean,onClick: (Boolean) -> Unit) {
+fun Login(modifier: Modifier, viewModel: LoginViewModel) {
 
     val email: String by viewModel.email.observeAsState(initial = "")
     val password: String by viewModel.password.observeAsState(initial = "")
     val loginEnable: Boolean by viewModel.loginEnable.observeAsState(initial = false)
+    val isLoading: Boolean by viewModel.isLoading.observeAsState(initial = false)
+    val coroutineScope = rememberCoroutineScope()
 
+    if (isLoading) {
+        Box(Modifier.fillMaxSize()) {
+            CircularProgressIndicator(Modifier.align(Alignment.Center))
+        }
+    } else {
         Column(modifier = modifier) {
             HeaderImage(Modifier.align(Alignment.CenterHorizontally))
             Spacer(modifier = Modifier.padding(16.dp))
@@ -63,28 +68,12 @@ fun Login(modifier: Modifier, viewModel: LoginViewModel,isLoggedIn:Boolean,onCli
             Spacer(modifier = Modifier.padding(8.dp))
             ForgotPassword(Modifier.align(Alignment.End))
             Spacer(modifier = Modifier.padding(16.dp))
-            LoginButton(loginEnable) {
-                    onClick(!isLoggedIn)
+            LoginButton(loginEnable, text = "Iniciar Sesion") {
+                coroutineScope.launch {
+                    viewModel.onLoginSelected()
                 }
             }
         }
-
-
-@Composable
-fun LoginButton(loginEnable: Boolean, onLoginSelected: () -> Unit) {
-    Button(
-        onClick = { onLoginSelected() },
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(48.dp),
-        colors = ButtonDefaults.buttonColors(
-            backgroundColor = Color(0xFF0CC0DF),
-            disabledBackgroundColor = Color(0xFF067F94),
-            contentColor = Color.White,
-            disabledContentColor = Color.White
-        ), enabled = loginEnable
-    ) {
-        Text(text = "Iniciar sesión")
     }
 }
 
@@ -142,4 +131,9 @@ fun HeaderImage(modifier: Modifier) {
         contentDescription = "Header",
         modifier = modifier
     )
+}
+@Preview(showSystemUi = true)
+@Composable
+fun LoginScreenPreview() {
+    LoginScreen(viewModel = LoginViewModel())
 }

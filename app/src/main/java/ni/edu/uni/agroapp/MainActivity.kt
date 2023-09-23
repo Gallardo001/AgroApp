@@ -10,8 +10,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-//import ni.edu.uni.agroapp.screens.LoginScreen
-import ni.edu.uni.agroapp.screens.LoginViewModel
 import ni.edu.uni.agroapp.ui.theme.AgroAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -24,10 +22,22 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                   // LoginScreen(viewModel = LoginViewModel())
+                    Greeting("Android")
                 }
             }
         }
     }
 }
 
+@Composable
+fun Greeting(name: String) {
+    Text(text = "pedro picapiedra $name!")
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview() {
+    AgroAppTheme {
+        Greeting("Android")
+    }
+}

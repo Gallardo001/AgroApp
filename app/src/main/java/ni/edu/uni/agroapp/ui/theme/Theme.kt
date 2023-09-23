@@ -38,7 +38,6 @@ fun AgroAppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composabl
     MaterialTheme(
         colors = colors,
         typography = Typography,
-        shapes = Shapes,
-        content = content
+            content = content
     )
 }

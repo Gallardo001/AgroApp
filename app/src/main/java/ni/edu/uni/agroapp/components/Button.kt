@@ -11,11 +11,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun LoginButton(loginEnable: Boolean,text:String, onLoginSelected: () -> Unit)
+fun LoginButton(modifier: Modifier=Modifier,loginEnable: Boolean,text:String, onLoginSelected: () -> Unit)
          {
     Button(
+
         onClick = { onLoginSelected() },
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .height(48.dp),
         colors = ButtonDefaults.buttonColors(

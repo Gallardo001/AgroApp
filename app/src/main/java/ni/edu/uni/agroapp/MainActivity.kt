@@ -8,8 +8,17 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import ni.edu.uni.agroapp.navigation.NavigationBottom
+import ni.edu.uni.agroapp.navigation.NavigationHost
+import ni.edu.uni.agroapp.navigation.Screens
+import ni.edu.uni.agroapp.screens.HomeNav
 import ni.edu.uni.agroapp.screens.LoginScreen
 import ni.edu.uni.agroapp.screens.viewmodel.LoginViewModel
 import ni.edu.uni.agroapp.ui.theme.AgroAppTheme
@@ -24,7 +33,15 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                   LoginScreen(viewModel = LoginViewModel())
+                    
+                    var isLoggedIn by remember { mutableStateOf(false) }
+                    val navController = rememberNavController()
+                    if (!isLoggedIn) {
+                        NavigationHost(navController = navController, isLoggedIn = isLoggedIn ,{ isLoggedIn = it})
+                    }
+                    else{
+                       HomeNav(navController = navController)
+                    }
                 }
             }
         }

@@ -18,9 +18,9 @@ import ni.edu.uni.agroapp.components.TextFieldNormal
 import ni.edu.uni.agroapp.components.dropDownMenu
 
 @Composable
-fun FirstScreen(){
+fun FirstScreen(modifier: Modifier = Modifier){
   Column (
-      modifier = Modifier
+      modifier = modifier
           .fillMaxSize()
           .padding(30.dp),
     horizontalAlignment = Alignment.CenterHorizontally

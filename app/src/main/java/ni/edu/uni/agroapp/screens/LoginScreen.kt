@@ -29,35 +29,31 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.launch
 import ni.edu.uni.agroapp.R
+import ni.edu.uni.agroapp.navigation.Screens
 import ni.edu.uni.agroapp.screens.viewmodel.LoginViewModel
 
 @Composable
-fun LoginScreen(viewModel: LoginViewModel) {
+fun LoginScreen(viewModel: LoginViewModel,isLoggedIn:Boolean,onClick: (Boolean) -> Unit) {
     Box(
         Modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        Login(Modifier.align(Alignment.Center), viewModel)
+        Login(Modifier.align(Alignment.Center), viewModel,isLoggedIn,onClick)
     }
 }
 
 @Composable
-fun Login(modifier: Modifier, viewModel: LoginViewModel) {
+fun Login(modifier: Modifier, viewModel: LoginViewModel,isLoggedIn:Boolean,onClick: (Boolean) -> Unit) {
 
     val email: String by viewModel.email.observeAsState(initial = "")
     val password: String by viewModel.password.observeAsState(initial = "")
     val loginEnable: Boolean by viewModel.loginEnable.observeAsState(initial = false)
-    val isLoading: Boolean by viewModel.isLoading.observeAsState(initial = false)
-    val coroutineScope = rememberCoroutineScope()
 
-    if (isLoading) {
-        Box(Modifier.fillMaxSize()) {
-            CircularProgressIndicator(Modifier.align(Alignment.Center))
-        }
-    } else {
         Column(modifier = modifier) {
             HeaderImage(Modifier.align(Alignment.CenterHorizontally))
             Spacer(modifier = Modifier.padding(16.dp))
@@ -68,13 +64,10 @@ fun Login(modifier: Modifier, viewModel: LoginViewModel) {
             ForgotPassword(Modifier.align(Alignment.End))
             Spacer(modifier = Modifier.padding(16.dp))
             LoginButton(loginEnable) {
-                coroutineScope.launch {
-                    viewModel.onLoginSelected()
+                    onClick(!isLoggedIn)
                 }
             }
         }
-    }
-}
 
 
 @Composable
@@ -149,9 +142,4 @@ fun HeaderImage(modifier: Modifier) {
         contentDescription = "Header",
         modifier = modifier
     )
-}
-@Preview(showSystemUi = true)
-@Composable
-fun LoginScreenPreview() {
-    LoginScreen(viewModel = LoginViewModel())
 }

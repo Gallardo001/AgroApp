@@ -1,4 +1,6 @@
+/*
 package ni.edu.uni.agroapp.screens
+
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -189,4 +191,4 @@ fun LoginScreenPreview(){
         .padding(16.dp)) {
         Login(Modifier.align(Alignment.Center), LoginViewModel())
     }
-}
+}*/

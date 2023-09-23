@@ -68,7 +68,7 @@ fun Login(modifier: Modifier, viewModel: LoginViewModel) {
             Spacer(modifier = Modifier.padding(8.dp))
             ForgotPassword(Modifier.align(Alignment.End))
             Spacer(modifier = Modifier.padding(16.dp))
-            LoginButton(loginEnable, text = "Iniciar Sesion") {
+            LoginButton(loginEnable = loginEnable, text = "Iniciar Sesion") {
                 coroutineScope.launch {
                     viewModel.onLoginSelected()
                 }

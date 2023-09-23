@@ -28,6 +28,7 @@ class LoginViewModel :ViewModel(){
     private fun isValidPassword(password: String): Boolean = password.length>6
 
     private fun isValidEmail(email: String): Boolean = Patterns.EMAIL_ADDRESS.matcher(email).matches()
+
     suspend fun onLoginSelected() {
         _isLoading.value=true
         delay(4000)

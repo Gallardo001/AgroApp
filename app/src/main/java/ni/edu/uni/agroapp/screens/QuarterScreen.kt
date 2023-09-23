@@ -44,34 +44,34 @@ fun QuarterScreen(){
                 )
                 RowActions(
                     icon = false,
-                    name = "Pedro Pablo",
-                    localitation = "a 8 km",
-                    user = "Perfil")
+                    name = "Fertilizante",
+                    localitation = "precio",
+                    user = "compra")
                 RowActions(
                     icon = false,
-                    name = "Andrew Tico",
-                    localitation = " a 7km",
-                    user = "Perfil")
+                    name = "Semillas",
+                    localitation = " precio",
+                    user = "compra")
                 RowActions(
                     icon = false,
-                    name = "Juan Perez",
-                    localitation = " a 4km",
-                    user = "Perfil")
+                    name = "Herramientas",
+                    localitation = " precio",
+                    user = "compra")
                 RowActions(
                     icon = false,
-                    name = "Ana Lopez",
-                    localitation = " a 8km",
-                    user = "Perfil")
+                    name = "Maquinaria",
+                    localitation = "precio",
+                    user = "compra")
                 RowActions(
                     icon = false,
-                    name = "Luis Lima",
-                    localitation = " a 7km",
-                    user = "Perfil")
+                    name = "Fertilizante",
+                    localitation = "precio",
+                    user = "compra")
                 RowActions(
                     icon = false,
-                    name = "Enoc Garcia",
-                    localitation = " a 7km",
-                    user = "Perfil")
+                    name = "semillas",
+                    localitation = "precio",
+                    user = "compra")
 
             }
         }

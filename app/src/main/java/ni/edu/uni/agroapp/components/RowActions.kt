@@ -1,5 +1,6 @@
 package ni.edu.uni.agroapp.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -20,10 +21,11 @@ fun RowActions (name:String, localitation:String, user:String, icon:Boolean){
     Row (modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.spacedBy(10.dp),
         verticalAlignment = Alignment.CenterVertically) {
-        if (icon){Icon(
+        if (icon){ Image(
             painter = painterResource(id = R.drawable.perfil),
             contentDescription = "usuario",
-            modifier = Modifier.weight(1.0f))}
+            modifier = Modifier.weight(1.0f))
+        }
         Text(text = name,
             fontSize = 14.sp ,
             textAlign = TextAlign.Center,

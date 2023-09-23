@@ -17,7 +17,7 @@ fun NavigationHost(navController: NavHostController,isLoggedIn:Boolean,onClick: 
         startDestination = Screens.Login.route
     ){
         composable(Screens.Login.route){
-            LoginScreen(LoginViewModel(), isLoggedIn,onClick )
+            //LoginScreen(LoginViewModel(), isLoggedIn,onClick )
         }
         composable(Screens.Register.route){
             RegisterScreen()

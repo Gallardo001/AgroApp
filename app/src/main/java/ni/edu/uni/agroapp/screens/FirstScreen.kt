@@ -15,12 +15,14 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import ni.edu.uni.agroapp.components.LoginButton
 import ni.edu.uni.agroapp.components.TextFieldNormal
 import ni.edu.uni.agroapp.components.dropDownMenu
+import ni.edu.uni.agroapp.navigation.Screens
 
 @Composable
-fun FirstScreen(modifier: Modifier = Modifier){
+fun FirstScreen(modifier: Modifier = Modifier, navController: NavController){
   Column (
       modifier = modifier
           .fillMaxSize()
@@ -51,12 +53,8 @@ fun FirstScreen(modifier: Modifier = Modifier){
       LoginButton(
           loginEnable = true,
           text = "Buscar") {
-
+           navController.navigate(Screens.S.route)
       }
 }
   }
-@Preview(showSystemUi = true)
-@Composable
-fun FirstScreenPreview(){
-    FirstScreen()
-}
+

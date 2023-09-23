@@ -27,5 +27,8 @@ sealed class Screens(
     object End: Screens(
         Icons.Filled.Settings,
         "pantalla5")
+    object S: Screens(
+        Icons.Filled.Settings,
+        "pantalla6")
 
 }

@@ -36,7 +36,7 @@ fun RowActions (name:String, localitation:String, user:String, icon:Boolean){
         LoginButton(
             loginEnable = true,
             text = user,
-            modifier = Modifier.weight(0.5f)
+            modifier = Modifier.weight(1f)
         ) {
 
         }

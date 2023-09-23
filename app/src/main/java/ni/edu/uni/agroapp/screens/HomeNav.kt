@@ -1,6 +1,9 @@
 package ni.edu.uni.agroapp.screens
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomAppBar
 import androidx.compose.material.BottomNavigation
@@ -31,12 +34,13 @@ fun HomeNav(navController: NavHostController) {
 
     val navItem = listOf(
         Screens.Home,
-        Screens.Login,
-        Screens.Register)
+        Screens.Betwen,
+        Screens.End)
 
         Scaffold(
             scaffoldState = scaffoldState,
-            bottomBar = { ButtomsNavigations(navController,navItem) }
+            bottomBar = { ButtomsNavigations(navController,navItem) },
+
         ){padding ->
            NavigationBottom(navController = navController,Modifier.padding(padding) )
         }
@@ -57,7 +61,8 @@ fun ButtomsNavigations(navController: NavHostController, navItem: List<Screens>)
                 BottomNavigationItem(
                     selected = currentRoute==item.route,
                     onClick = { navController.navigate(item.route) },
-                    icon = { Icon(imageVector =  item.icon, contentDescription = null , tint = Color.Gray)},
+                    icon = { Icon(imageVector =  item.icon, contentDescription = null , tint = Color.White)},
+                    modifier = Modifier.background(Color(0xFF0CC0DF)),
                     alwaysShowLabel = false,
                 )
 

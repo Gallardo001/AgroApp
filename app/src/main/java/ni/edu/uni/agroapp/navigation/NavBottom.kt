@@ -7,6 +7,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import ni.edu.uni.agroapp.screens.FirstScreen
 import ni.edu.uni.agroapp.screens.Login
+import ni.edu.uni.agroapp.screens.SecondScreen
+import ni.edu.uni.agroapp.screens.ThirdScreen
 
 
 @Composable
@@ -20,11 +22,11 @@ fun NavigationBottom(navController: NavHostController,modifier: Modifier = Modif
         }
 
           composable(Screens.Betwen.route){
-              FirstScreen()
+              ThirdScreen()
 
           }
           composable(Screens.End.route){
-              FirstScreen()
+              SecondScreen()
           }
 
     }

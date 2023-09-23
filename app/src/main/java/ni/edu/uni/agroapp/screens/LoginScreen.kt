@@ -29,24 +29,25 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import kotlinx.coroutines.launch
 import ni.edu.uni.agroapp.R
 import ni.edu.uni.agroapp.components.LoginButton
 import ni.edu.uni.agroapp.screens.viewmodel.LoginViewModel
 
 @Composable
-fun LoginScreen(viewModel: LoginViewModel) {
+fun LoginScreen(viewModel: LoginViewModel, navController: NavHostController, isLoggedIn:Boolean, onClick: (Boolean) -> Unit) {
     Box(
         Modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        Login(Modifier.align(Alignment.Center), viewModel)
+        Login(Modifier.align(Alignment.Center), viewModel, navController,isLoggedIn,onClick)
     }
 }
 
 @Composable
-fun Login(modifier: Modifier, viewModel: LoginViewModel) {
+fun Login(modifier: Modifier, viewModel: LoginViewModel,navController: NavHostController,isLoggedIn:Boolean,onClick: (Boolean) -> Unit) {
 
     val email: String by viewModel.email.observeAsState(initial = "")
     val password: String by viewModel.password.observeAsState(initial = "")
@@ -70,7 +71,7 @@ fun Login(modifier: Modifier, viewModel: LoginViewModel) {
             Spacer(modifier = Modifier.padding(16.dp))
             LoginButton(loginEnable, text = "Iniciar Sesion") {
                 coroutineScope.launch {
-                    viewModel.onLoginSelected()
+                   onClick(!isLoggedIn)
                 }
             }
         }
@@ -131,9 +132,4 @@ fun HeaderImage(modifier: Modifier) {
         contentDescription = "Header",
         modifier = modifier
     )
-}
-@Preview(showSystemUi = true)
-@Composable
-fun LoginScreenPreview() {
-    LoginScreen(viewModel = LoginViewModel())
 }

@@ -24,9 +24,7 @@ fun FirstScreen(){
           .fillMaxSize()
           .padding(30.dp),
     horizontalAlignment = Alignment.CenterHorizontally
-  ) {
-
-    Text(
+  ) {Text(
         text = "Busquemos acerca de tu cultivo",
         fontSize = 28.sp,
         fontWeight = FontWeight.ExtraBold,

@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.launch
 import ni.edu.uni.agroapp.R
+import ni.edu.uni.agroapp.components.LoginButton
 import ni.edu.uni.agroapp.screens.viewmodel.LoginViewModel
 
 @Composable
@@ -67,31 +68,12 @@ fun Login(modifier: Modifier, viewModel: LoginViewModel) {
             Spacer(modifier = Modifier.padding(8.dp))
             ForgotPassword(Modifier.align(Alignment.End))
             Spacer(modifier = Modifier.padding(16.dp))
-            LoginButton(loginEnable) {
+            LoginButton(loginEnable, text = "Iniciar Sesion") {
                 coroutineScope.launch {
                     viewModel.onLoginSelected()
                 }
             }
         }
-    }
-}
-
-
-@Composable
-fun LoginButton(loginEnable: Boolean, onLoginSelected: () -> Unit) {
-    Button(
-        onClick = { onLoginSelected() },
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(48.dp),
-        colors = ButtonDefaults.buttonColors(
-            backgroundColor = Color(0xFF0CC0DF),
-            disabledBackgroundColor = Color(0xFF067F94),
-            contentColor = Color.White,
-            disabledContentColor = Color.White
-        ), enabled = loginEnable
-    ) {
-        Text(text = "Iniciar sesión")
     }
 }
 
